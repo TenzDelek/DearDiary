@@ -7,14 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install",
-    "postinstall": "prisma generate"
-    
+    "postinstall": "prisma generate",
+    "prepare": "husky install"
   },
   "dependencies": {
-    "@clerk/nextjs": "^5.7.1",
     "@prisma/client": "^5.20.0",
-    "@vercel/postgres": "^0.10.0",
+    "@clerk/nextjs": "^5.7.1",
     "next": "14.2.13",
     "next-auth": "^4.24.8",
     "react": "^18",
