@@ -18,12 +18,14 @@ DATABASE_URL=""
 ```
 
 - **Anon Key**: The Anon key is in the home when you first create the project.
+![Screenshot 2024-10-04 231843](https://github.com/user-attachments/assets/fd8fb7d4-46a1-4959-b7a1-8f7ab3d56109)
 
 - **Database URL**: 
   1. Go to **Left Panel > Project Settings > Database**.
   2. Copy the connection string.
   3. Replace the password with your set password.
   4. Change the default port (6543) to **5432**.
+![Screenshot 2024-10-04 232839](https://github.com/user-attachments/assets/4b6f0557-7dba-4e7f-967b-27bbcb6b4d99)
 
 Your `DATABASE_URL` should look like this:
 
