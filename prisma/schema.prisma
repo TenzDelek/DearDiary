@@ -13,4 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// CREATE SCHEMA
+model User {
+  id   String @id @default(uuid())
+  name String
+}
