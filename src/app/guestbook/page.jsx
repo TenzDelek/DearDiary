@@ -20,7 +20,7 @@ function GuestbookEntries({ entries }) {
           <p className="font-semibold">{entry.created_by}</p>
           <p>{entry.body}</p>
           <p className="text-xs text-gray-500">
-            Last modified: {new Date(entry.last_modified).toLocaleString()}
+            Written: {new Date(entry.last_modified).toLocaleString()}
           </p>
         </li>
       ))}
