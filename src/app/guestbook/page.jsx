@@ -1,38 +1,14 @@
 // /app/page.jsx
 
 "use client";
-
 import { Suspense, useEffect, useState } from "react";
 import Form from "./form";
 
-function GuestbookForm() {
-  return <Form />;
+function GuestbookForm({ onNewEntry }) {
+  return <Form onNewEntry={onNewEntry} />;
 }
 
-function GuestbookEntries() {
-  const [entries, setEntries] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchEntries() {
-      try {
-        const res = await fetch("/api/guestbook/entries");
-        const data = await res.json();
-        setEntries(data);
-      } catch (error) {
-        console.error("Failed to fetch guestbook entries", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchEntries();
-  }, []);
-
-  if (loading) {
-    return <p>Loading entries...</p>;
-  }
-
+function GuestbookEntries({ entries }) {
   if (entries.length === 0) {
     return <p>No entries yet. Be the first to sign!</p>;
   }
@@ -53,6 +29,33 @@ function GuestbookEntries() {
 }
 
 function Guestbook() {
+  const [entries, setEntries] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchEntries() {
+      try {
+        const res = await fetch("/api/guestbook/entries");
+        const data = await res.json();
+        setEntries(data);
+      } catch (error) {
+        console.error("Failed to fetch guestbook entries", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchEntries();
+  }, []);
+
+  const addNewEntry = (newEntry) => {
+    setEntries((prevEntries) => [newEntry, ...prevEntries]);
+  };
+
+  if (loading) {
+    return <p>Loading entries...</p>;
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center p-12">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -66,12 +69,12 @@ function Guestbook() {
           Sign our guestbook!
         </h1>
         <Suspense fallback={<p>Loading form...</p>}>
-          <GuestbookForm />
+          <GuestbookForm onNewEntry={addNewEntry} />
         </Suspense>
 
         <h2 className="relative font-semibold text-xl mt-8">Guestbook Entries</h2>
         <Suspense fallback={<p>Loading entries...</p>}>
-          <GuestbookEntries />
+          <GuestbookEntries entries={entries} />
         </Suspense>
       </div>
     </main>

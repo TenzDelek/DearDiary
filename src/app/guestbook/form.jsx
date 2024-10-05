@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 
-export default function Form() {
+export default function Form({ onNewEntry }) {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(null);
   const formRef = useRef();
@@ -28,6 +28,11 @@ export default function Form() {
         const errorData = await res.json(); // Parse error response
         throw new Error(errorData.error || "Request to /api/guestbook failed");
       }
+
+      const newEntry = await res.json(); // Get the newly created entry from the response
+
+      // Pass the new entry to the parent component
+      onNewEntry(newEntry);
 
       formRef.current?.reset(); // Reset form on success
     } catch (error) {
