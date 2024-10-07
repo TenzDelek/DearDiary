@@ -25,6 +25,10 @@ import { FloatingNav } from "@/components/ui/floating-navbar";
       name: "Daily Quote",
       link: "/daily-quote",
     },
+    {
+      name: "About",
+      link: "/about",
+    }
   ];
   return (
     <div className="relative  w-full">
