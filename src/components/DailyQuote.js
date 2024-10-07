@@ -2,34 +2,38 @@ import React, { useState, useEffect } from 'react';
 
 const DailyQuote = () => {
     const [quote, setQuote] = useState('');
-    const [author, setAuthor] = useState('');
-    const [loading, setLoading] = useState(true); // Loading state
+    const [author, setAuthor] = useState(''); 
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchQuote();
     }, []);
 
     const fetchQuote = async () => {
-        setLoading(true); // Set loading to true before fetching
+        setLoading(true); 
         try {
             const response = await fetch('https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en');
             const data = await response.json();
-            console.log(data);
-            // Access the quote text and author directly
-            setQuote(data.quoteText);
-            setAuthor(data.quoteAuthor || "Unknown"); // Use "Unknown" if author is not provided
+            console.log(data); // Log the API response
 
+            // Access quote text and author from the API response
+            setQuote(data.quoteText);
+            setAuthor(data.quoteAuthor || "Unknown");
+            
+            /*setQuote("The only way to do great work is to love what you do.");
+    setAuthor("Steve Jobs");
+    */
         } catch (error) {
             console.error('Error fetching quote:', error);
             setQuote('An inspirational quote will be here.');
-            setAuthor(''); // Optionally you could also set a default author
+            setAuthor('');
         } finally {
-            setLoading(false); // Set loading to false after fetching
+            setLoading(false);
         }
     };
 
     if (loading) {
-        return <div>Loading...</div>; // Display loading message
+        return <div>Loading...</div>;
     }
 
     return (
