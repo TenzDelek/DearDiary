@@ -19,25 +19,25 @@ export const metadata = {
   description: "A Digital Diary for the future",
   icons: {
     icon: "/favicon/favicon/favicon/favicon.ico?v=4",
-    apple:"/favicon/favicon/apple-touch-icon.png?v=4",
-    shortcut:"/favicon/favicon/apple-touch-icon.png"
+    apple: "/favicon/favicon/apple-touch-icon.png?v=4",
+    shortcut: "/favicon/favicon/apple-touch-icon.png"
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-   <ClerkProvider>
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <header className="flex items-center justify-between p-2  text-white">
+    <ClerkProvider>
+      <html lang="en" className="dark">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <header className="flex items-center justify-between p-2  text-white">
             <div className="flex-grow flex justify-center">
-              <Navbar /> 
+              <Navbar />
             </div>
             <div className="flex items-center">
               <SignedOut>
-                <SignInButton className="mr-4" /> 
+                <SignInButton className="mr-4" />
               </SignedOut>
               <SignedIn>
                 <UserButton />
@@ -45,8 +45,8 @@ export default function RootLayout({ children }) {
             </div>
           </header>
           {children}
-      </body>
-    </html>
+        </body>
+      </html>
     </ClerkProvider>
   );
 }

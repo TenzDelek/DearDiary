@@ -7,6 +7,7 @@ export default function Navbar() {
       <Link href="/notes">Notes</Link>
       <Link href="/daily-quote">Daily Quote</Link>
       <Link href="/guestbook">Guestbook</Link>
+      <Link href="/about">About</Link>
     </nav>
   );
 }
