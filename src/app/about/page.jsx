@@ -64,11 +64,8 @@ const About= ()=>{
       ]
 
     return(
-       <div className="min-h-screen bg-black text-gray-100 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute inset-0  bg-cover bg-center opacity-5"/>
-            <div className="absolute inset-0 bg-gradient-to-br from-zinc-900/20 to-blue-900/20"/>
-        </div>
+       <div className="min-h-screen bg-[#0A0A0A] text-gray-100 overflow-hidden">
+    
         <div className="relative container mx-auto px-4 py-16">
             <header className="text-center mb-16">
                 <motion.h1

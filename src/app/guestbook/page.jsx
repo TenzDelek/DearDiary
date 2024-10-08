@@ -53,7 +53,7 @@ function Guestbook() {
   };
 
   if (loading) {
-    return <p>Loading entries...</p>;
+    return <p className=" h-screen w-full flex items-center justify-center">Loading entries...</p>;
   }
 
   return (
