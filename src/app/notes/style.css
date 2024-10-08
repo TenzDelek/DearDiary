@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e; /* Dark background */
+    color: #f0f0f0; /* Light text color */
+}
+
+header {
+    background: #121212; /* Darker header */
+    color: #f0f0f0;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline; /* Horizontal layout */
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f0f0f0; /* Light text */
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+nav ul li a.active {
+    font-weight: bold; /* Highlight current page */
+    border-bottom: 2px solid #28a745; /* Active link underline */
+}
+
+.view {
+    margin: 20px;
+}
+
+h2 {
+    border-bottom: 2px solid #444; /* Underline for headings */
+    padding-bottom: 5px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    background: #222; /* Textarea background */
+    color: #f0f0f0; /* Text color */
+    border: 1px solid #444; /* Border */
+    border-radius: 5px;
+    margin-bottom: 10px;
+    resize: none; /* Prevent resizing */
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    background: #222; /* Input background */
+    color: #f0f0f0; /* Input text color */
+    border: 1px solid #444; /* Border */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.save-button {
+    background: #28a745; /* Save button background */
+    color: white; /* Save button text */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.save-button:hover {
+    background: #218838; /* Save button hover effect */
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #121212; /* Footer background */
+    color: white;
+}
