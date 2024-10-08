@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://dear-diary-black.vercel.app/
+
+# Sitemaps
+Sitemap: https://dear-diary-black.vercel.app/sitemap.xml
