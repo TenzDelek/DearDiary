@@ -19,9 +19,9 @@ export const metadata = {
   title: "DearDiary",
   description: "A Digital Diary for the future",
   icons: {
-    icon: "/favicon/favicon/favicon/favicon.ico?v=4",
-    apple: "/favicon/favicon/apple-touch-icon.png?v=4",
-    shortcut: "/favicon/favicon/apple-touch-icon.png"
+    icon: "/favicon/favicon-32x32.png",
+    apple: "/favicon/apple-touch-icon.png",
+    shortcut: "/favicon/DearDiary.png"
   },
 };
 
@@ -38,8 +38,8 @@ export default function RootLayout({ children }) {
         <meta property="og:url" content="https://dear-diary-black.vercel.app/" />
         <meta property="og:type" content="website" />
         <meta name="robots" content="index, follow" />
-        <link rel="icon" href="/favicon/favicon/favicon.ico?v=4" />
-        <link rel="apple-touch-icon" href="/favicon/favicon/apple-touch-icon.png?v=4" />
+        <link rel="icon" href="/favicon/favicon-32x32.png" />
+        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
       </Head>
       <html lang="en" className="dark">
       <body
