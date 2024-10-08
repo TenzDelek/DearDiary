@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import Navbar from '../components/Navbar';
+import Footer from "@/components/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +32,7 @@ export default function RootLayout({ children }) {
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <header className="flex items-center justify-between p-2  text-white">
+          <header className="flex items-center justify-between p-2 text-white">
             <div className="flex-grow flex justify-center">
               <Navbar />
             </div>
@@ -45,6 +46,7 @@ export default function RootLayout({ children }) {
             </div>
           </header>
           {children}
+          <footer><Footer/></footer>
         </body>
       </html>
     </ClerkProvider>
