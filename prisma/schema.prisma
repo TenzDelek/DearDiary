@@ -14,6 +14,17 @@ datasource db {
 }
 
 model User {
-  id   String @id @default(uuid())
-  name String
+  id       String  @id @default(uuid())
+  clerkId  String  @unique
+  name     String
+  email    String  @unique
+  createdAt DateTime @default(now())
+}
+
+model Guestbook {
+  id           Int      @id @default(autoincrement())
+  email        String
+  created_by   String
+  body         String
+  last_modified DateTime @default(now())
 }
