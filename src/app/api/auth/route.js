@@ -1,4 +1,5 @@
-import { prisma } from '@/lib/prisma'; // Prisma client import from lib
+ // Prisma client import from lib
+import prisma from '@/lib/db';
 import { useAuth } from '@clerk/nextjs';
 
 export async function POST(req) {
