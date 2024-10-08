@@ -137,3 +137,8 @@ Feel free to modify any part of the text to better suit your project!
 # Celebrate Your Contribution!
 
 Once your PR is merged, you’ve officially made your first contribution!
+
+
+## Our Valuable Contributors ❤️✨
+
+[![Contributors](https://contrib.rocks/image?repo=TenzDelek/DearDiary)](https://github.com/TenzDelek/DearDiary/graphs/contributors)
