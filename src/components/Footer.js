@@ -1,14 +1,15 @@
 'use client'
 import Link from 'next/link';
-import { FaGithub,  FaLink } from "react-icons/fa6";
+import { Github, Link as FaLink } from 'lucide-react';
 
 const Footer = () => {
 
     return (
         <div className="text-black py-5 bg-white">
-            <div className="flex justify-center gap-4"> 
-                    <Link href="https://github.com/TenzDelek/DearDiary"><FaGithub size={24}/></Link>
-                    <Link href="https://dear-diary-black.vercel.app/"><FaLink size={24}/></Link>
+            <div className="flex justify-center gap-4">
+                    <p>Follow us:</p>
+                    <Link href="https://github.com/TenzDelek/DearDiary"><Github /></Link>
+                    <Link href="https://dear-diary-black.vercel.app/"><FaLink /></Link>
             </div>
         </div>
     )
