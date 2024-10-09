@@ -7,7 +7,6 @@ const Footer = () => {
     return (
         <div className="text-black py-5 bg-white">
             <div className="flex justify-center gap-4">
-                    <p>Follow us:</p>
                     <Link href="https://github.com/TenzDelek/DearDiary"><Github /></Link>
                     <Link href="https://dear-diary-black.vercel.app/"><FaLink /></Link>
             </div>
