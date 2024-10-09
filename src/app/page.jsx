@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { SignUpButton } from "@clerk/nextjs";
 
 export default function Home() {
   useEffect(() => {
@@ -32,9 +33,7 @@ export default function Home() {
 
       {/* Features Section */}
       <section className="py-12">
-        <h2 className="text-3xl font-semibold text-center mb-8">
-          Features
-        </h2>
+        <h2 className="text-3xl font-semibold text-center mb-8">Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Feature 1 */}
           <div className="p-6 rounded-lg shadow-lg bg-neutral-900">
@@ -62,15 +61,13 @@ export default function Home() {
 
       {/* Call to Action Section */}
       <section className="text-center py-12 bg-neutral-900">
-        <h2 className="text-3xl font-semibold">
-          Ready to start journaling?
-        </h2>
+        <h2 className="text-3xl font-semibold">Ready to start journaling?</h2>
         <p className="mt-4 text-lg">
           Sign up now and keep track of your daily life!
         </p>
         <div className="mt-8">
           <Button asChild>
-            <Link href="/signup">Sign Up Now</Link>
+            <SignUpButton>Sign Up Now</SignUpButton>
           </Button>
         </div>
       </section>

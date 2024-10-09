@@ -1,6 +1,6 @@
-'use client'
-import { SignUp, useAuth } from '@clerk/nextjs';
-import { useEffect } from 'react';
+"use client";
+import { SignUp, useAuth } from "@clerk/nextjs";
+import { useEffect } from "react";
 
 export default function Page() {
   const { isSignedIn, userId } = useAuth();
@@ -8,13 +8,13 @@ export default function Page() {
   useEffect(() => {
     if (isSignedIn && userId) {
       // Call the API to store user info in the DB
-      fetch('/api/auth/signup', {
-        method: 'POST',
+      fetch("/api/auth/signup", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ userId }),
-      }).catch((error) => console.error('Error storing user:', error));
+      }).catch((error) => console.error("Error storing user:", error));
     }
   }, [isSignedIn, userId]);
 
