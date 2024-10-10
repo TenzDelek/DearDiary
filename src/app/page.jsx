@@ -153,7 +153,11 @@ export default function Home() {
             <SignUpButton>Sign Up Now</SignUpButton>
           </Button>
         </motion.div>
+
       </motion.section>
+        <footer className="text-center text-sm text-gray-500 mt-6 -mb-4">
+          <p>&copy; {new Date().getFullYear()} DearDiary. All rights reserved.</p>
+        </footer>
     </main>
   );
 }
