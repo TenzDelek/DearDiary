@@ -1,0 +1,17 @@
+name: PR Comment
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  add_comment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Add a "Thank you" comment to new PR
+        uses: actions-ecosystem/action-add-comment@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_number: ${{ github.event.pull_request.number }}
+          comment: '🎉 Thank you for your contribution! Your pull request has been submitted successfully. A maintainer from DearDiary team will review it as soon as possible. We appreciate your support in making this project better.'
