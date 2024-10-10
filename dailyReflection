@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Reflection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+        select {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .reflection-entry {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Daily Reflection</h1>
+        <textarea id="reflectionInput" placeholder="Write your thoughts here..."></textarea>
+        <label for="moodSelect">Select your mood:</label>
+        <select id="moodSelect">
+            <option value="happy">Happy</option>
+            <option value="sad">Sad</option>
+            <option value="stressed">Stressed</option>
+            <option value="neutral">Neutral</option>
+        </select>
+        <button id="saveButton">Save Reflection</button>
+
+        <h2>Your Past Reflections</h2>
+        <div id="reflectionHistory"></div>
+    </div>
+    <script>
+        document.getElementById('saveButton').addEventListener('click', function() {
+            const reflectionInput = document.getElementById('reflectionInput').value;
+            const moodSelect = document.getElementById('moodSelect').value;
+            const reflectionHistory = document.getElementById('reflectionHistory');
+
+            if (reflectionInput.trim() === '') {
+                alert('Please write something before saving!');
+                return;
+            }
+
+            const reflectionEntry = document.createElement('div');
+            reflectionEntry.classList.add('reflection-entry');
+            reflectionEntry.innerHTML = `<strong>Mood:</strong> ${moodSelect} <br><strong>Reflection:</strong> ${reflectionInput}`;
+            
+            reflectionHistory.appendChild(reflectionEntry);
+            
+            // Clear input fields
+            document.getElementById('reflectionInput').value = '';
+            document.getElementById('moodSelect').value = 'happy';
+        });
+    </script>
+</body>
+</html>
