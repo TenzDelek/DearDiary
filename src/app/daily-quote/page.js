@@ -30,7 +30,7 @@ export default function DailyQuote() {
   };
 
   const copyQuote = async () => {
-    await navigator.clipboard.writeText(`"${quote}" - ${author}`);
+    await navigator.clipboard.writeText(`${quote} - ${author}`);
   };
 
   return (
@@ -49,7 +49,7 @@ export default function DailyQuote() {
           <div className="text-center">
             <ImQuotesRight className="h-12 w-12  mx-auto mb-6" />
             <p className="text-3xl italic font-light mb-4">
-              "{quote}"
+              {quote}
             </p>
             <p className="text-xl font-semibold">- {author}</p>
           </div>
