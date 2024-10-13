@@ -7,8 +7,9 @@ const items = [
   {link:"/", name: "Home"},
   {link:"/notes", name: "Notes"},
   {link:"/daily-quote", name: "Daily Quote"},
-  {link:"/guestbook", name: "Guestbook"},
   {link:"/about", name: "About"},
+  {link:"/guestbook", name: "Guestbook"},
+  
 ]
 
 export default function Navbar() {
