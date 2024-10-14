@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Notes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <main>
+        <div id="pastEntries" class="view">
+            <h2>Past Entries</h2>
+            <div id="entriesList"></div>
+        </div>
+
+        <div id="unfinishedProjects" class="view" style="display: none;">
+            <h2>Unfinished Projects</h2>
+            <div id="unfinishedList"></div>
+        </div>
+
+        <div id="newEntry" class="view" style="display: none;">
+            <h2>New Entry</h2>
+            <textarea id="entryText" rows="10" placeholder="Write your thoughts here..."></textarea>
+            <input type="text" id="entryCategory" placeholder="Category">
+            <button class="save-button" onclick="saveEntry()">Save Entry</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 My Notes</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
