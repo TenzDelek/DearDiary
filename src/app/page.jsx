@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Lenis from "lenis";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { SignUpButton } from "@clerk/nextjs";
+import { SignUpButton, useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const { isSignedIn } = useUser();
+  const router = useRouter();
   useEffect(() => {
     const lenis = new Lenis();
     function raf(time) {
@@ -62,13 +65,21 @@ export default function Home() {
       {/* Call to Action Section */}
       <section className="text-center py-12 bg-neutral-900">
         <h2 className="text-3xl font-semibold">Ready to start journaling?</h2>
-        <p className="mt-4 text-lg">
+        {isSignedIn ? (<p className="mt-4 text-lg">
+          Start writing your thoughts and experiences!
+        </p>) : (<p className="mt-4 text-lg">
           Sign up now and keep track of your daily life!
-        </p>
+        </p>)}
+        
         <div className="mt-8">
-          <Button asChild>
-            <SignUpButton>Sign Up Now</SignUpButton>
-          </Button>
+        {isSignedIn ? (
+            <Button onClick={() => router.push("/notes")}>Go to my Diary</Button>
+          ) : (
+            <Button asChild>
+              <SignUpButton>Sign Up Now</SignUpButton>
+            </Button>
+          )}
+          
         </div>
       </section>
     </main>
