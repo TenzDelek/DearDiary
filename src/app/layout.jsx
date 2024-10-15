@@ -20,8 +20,8 @@ export const metadata = {
   description: "A Digital Diary for the future",
   icons: {
     icon: "../../public/favicon/favicon.ico",
-    apple: "../../public/apple-touch-icon.webp",
-    shortcut: "../../public/apple-touch-icon.webp",
+    apple: "../../public/favicon/apple-touch-icon.webp",
+    shortcut: "../../public/favicon/apple-touch-icon.webp",
   },
 };
 
