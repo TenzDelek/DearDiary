@@ -19,6 +19,26 @@ export default function Home() {
     requestAnimationFrame(raf);
   }, []);
 
+  // Inject chatbot script on mount
+  useEffect(() => {
+    window.embeddedChatbotConfig = {
+      chatbotId: "jgBrdHagYNRMS1abtJF5H",
+      domain: "www.chatbase.co",
+    };
+
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.defer = true;
+    script.setAttribute("chatbotId", "jgBrdHagYNRMS1abtJF5H");
+    script.setAttribute("domain", "www.chatbase.co");
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+  //chatbot script ended
+
   return (
     <main className="container mx-auto px-4 py-8">
       {/* Hero Section */}
