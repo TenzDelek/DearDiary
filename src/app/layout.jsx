@@ -14,16 +14,20 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
-
 export const metadata = {
-  title: "DearDiary",
+  title: {
+    template: '%s | Dear Diary',
+    default: 'Dear Diary',
+  },
   description: "A Digital Diary for the future",
   icons: {
-    icon: "../../public/favicon/favicon.ico",
-    apple: "../../public/apple-touch-icon.png",
-    shortcut: "../../public/apple-touch-icon.png"
-  }
-}
+    icon: "/favicon/favicon/favicon/favicon.ico?v=4",
+    apple: "/favicon/favicon/apple-touch-icon.png?v=4",
+    shortcut: "/favicon/favicon/apple-touch-icon.png"
+  },
+  metadataBase: new URL('https://dear-diary-black.vercel.app/'),
+
+};
 
 export default function RootLayout({ children }) {
   return (
