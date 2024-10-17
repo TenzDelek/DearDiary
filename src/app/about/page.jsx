@@ -60,7 +60,7 @@ const About = () => {
 
     return (
         <div className="min-h-screen bg-[#0A0A0A] text-[#FAFAFA] overflow-hidden">
-            <div className="relative container mx-auto px-4 py-16">
+            <div className="container mx-auto px-4 py-16">
                 <header className="text-center mb-16">
                     <h1 className="text-6xl font-bold mb-4">
                         Meet DearDiary, your space for life&apos;s moments
