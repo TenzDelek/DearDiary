@@ -20,10 +20,10 @@ export const metadata = {
   description: "A Digital Diary for the future",
   icons: {
     icon: "../../public/favicon/favicon.ico",
-    apple: "../../public/apple-touch-icon.png",
-    shortcut: "../../public/apple-touch-icon.png"
-  }
-}
+    apple: "../../public/favicon/apple-touch-icon.webp",
+    shortcut: "../../public/favicon/apple-touch-icon.webp",
+  },
+};
 
 export default function RootLayout({ children }) {
   return (
