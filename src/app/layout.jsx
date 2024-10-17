@@ -32,8 +32,8 @@ export default function RootLayout({ children }) {
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <header className="flex items-center justify-between p-2 text-white">
-            <div className="flex-grow flex sm:justify-center">
+          <header className="fixed flex items-center justify-between w-full p-2 text-white bg-black">
+            <div className="sm:justify-center flex flex-grow">
               <Navbar />
             </div>
             <div className="flex items-center">
@@ -45,8 +45,11 @@ export default function RootLayout({ children }) {
               </SignedIn>
             </div>
           </header>
-          {children}
-          <footer><Footer/></footer>
+          {/* This div is responsible to maintain proper spacing throughout the pages [this was needed because the Navbar has been fixed] */}
+          <div id="main" className="pt-14 sm:pt-24">
+            {children}
+          </div>
+          <footer><Footer /></footer>
         </body>
       </html>
     </ClerkProvider>
