@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <header className="flex items-center justify-between p-2 text-white">
+          <header className="navbar-header flex items-center justify-between p-2 text-white">
             <div className="flex-grow flex sm:justify-center">
               <Navbar />
             </div>
