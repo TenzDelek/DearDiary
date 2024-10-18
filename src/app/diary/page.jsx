@@ -6,14 +6,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 
+const initialFormState = {
+    title: "",
+    content: "",
+};
+
 export default function Diary() {
     const [loading, setLoading] = useState(false);
     const [diaries, setDiaries] = useState([]);
     const [count, setCount] = useState(false);
-    const [form, setForm] = useState({
-        title: "",
-        content: "",
-    });
+    const [form, setForm] = useState(initialFormState);
 
     const [showModal, setShowModal] = useState(false);
     const [currentDiary, setCurrentDiary] = useState(null);
@@ -37,6 +39,7 @@ export default function Diary() {
             const data = await res.json();
         } catch (err) {
             console.log("error while sending the diary details", err);
+            setForm(initialFormState);
         } finally {
             setCount((prev) => !prev);
         }
