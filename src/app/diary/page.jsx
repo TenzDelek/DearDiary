@@ -39,9 +39,9 @@ export default function Diary() {
             const data = await res.json();
         } catch (err) {
             console.log("error while sending the diary details", err);
-            setForm(initialFormState);
         } finally {
             setCount((prev) => !prev);
+            setForm(initialFormState);
         }
     };
 
