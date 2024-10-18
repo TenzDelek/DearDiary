@@ -29,7 +29,7 @@ export default function Home() {
         </p>
         <div className="mt-8">
           <Button>
-            <Link href="/get-started">Get Started</Link>
+            <Link href="/notes">Get Started</Link>
           </Button>
         </div>
       </section>
@@ -65,21 +65,26 @@ export default function Home() {
       {/* Call to Action Section */}
       <section className="text-center py-12 bg-neutral-900">
         <h2 className="text-3xl font-semibold">Ready to start journaling?</h2>
-        {isSignedIn ? (<p className="mt-4 text-lg">
-          Start writing your thoughts and experiences!
-        </p>) : (<p className="mt-4 text-lg">
-          Sign up now and keep track of your daily life!
-        </p>)}
-        
-        <div className="mt-8">
         {isSignedIn ? (
-            <Button onClick={() => router.push("/notes")}>Go to my Diary</Button>
+          <p className="mt-4 text-lg">
+            Start writing your thoughts and experiences!
+          </p>
+        ) : (
+          <p className="mt-4 text-lg">
+            Sign up now and keep track of your daily life!
+          </p>
+        )}
+
+        <div className="mt-8">
+          {isSignedIn ? (
+            <Button onClick={() => router.push("/notes")}>
+              Go to my Diary
+            </Button>
           ) : (
             <Button asChild>
               <SignUpButton>Sign Up Now</SignUpButton>
             </Button>
           )}
-          
         </div>
       </section>
     </main>
