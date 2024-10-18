@@ -19,6 +19,7 @@ model User {
   name      String
   email     String   @unique
   createdAt DateTime @default(now())
+  Notes     Notes[]
   Diary     Diary[]
 }
 
@@ -33,6 +34,15 @@ model Guestbook {
 model Diary {
   id        String   @id @default(uuid())
   title     String
+  content   String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Notes {
+  id        String   @id @default(uuid())
   content   String
   user      User     @relation(fields: [userId], references: [id])
   userId    String
