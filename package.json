@@ -19,7 +19,7 @@
     "prisma:push": "docker-compose exec app npx prisma push",
     "prisma:pull": "docker-compose exec app npx prisma pull",
     "prisma:generate": "docker-compose exec app npx prisma generate",
-    "postinstall": "if [ \"$NODE_ENV\" != \"development\" ]; then prisma generate; fi",
+    "postinstall": "cross-env NODE_ENV=development npm run prisma:generate",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -45,6 +45,7 @@
   "devDependencies": {
     "@types/node": "22.7.4",
     "@types/react": "18.3.11",
+    "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.13",
     "husky": "^9.1.6",
