@@ -39,21 +39,21 @@ export default function Home() {
         <h2 className="text-3xl font-semibold text-center mb-8">Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Feature 1 */}
-          <div className="p-6 rounded-lg shadow-lg bg-neutral-900">
+          <div className="p-6 rounded-lg shadow-lg bg-neutral-900 transition-transform duration-300 transform hover:scale-105 hover:bg-neutral-800 hover:shadow-xl">
             <h3 className="text-2xl font-semibold">Daily Logs</h3>
             <p className="mt-4">
               Easily write and organize your daily thoughts and experiences.
             </p>
           </div>
           {/* Feature 2 */}
-          <div className="p-6 rounded-lg shadow-lg bg-neutral-900">
+          <div className="p-6 rounded-lg shadow-lg bg-neutral-900 transition-transform duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-neutral-800">
             <h3 className="text-2xl font-semibold">Customizable Themes</h3>
             <p className="mt-4">
               Personalize your diary with beautiful themes and styles.
             </p>
           </div>
           {/* Feature 3 */}
-          <div className="p-6 rounded-lg shadow-lg bg-neutral-900">
+          <div className="p-6 rounded-lg shadow-lg bg-neutral-900 transition-transform duration-300 transform hover:scale-105 hover:bg-neutral-800 hover:shadow-xl">
             <h3 className="text-2xl font-semibold">Secure and Private</h3>
             <p className="mt-4">
               Your entries are safe and secure with our privacy-first approach.
@@ -63,7 +63,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="text-center py-12 bg-neutral-900">
+      <section className="text-center py-12 bg-neutral-900 transition-transform transform hover:scale-105 hover:shadow-xl">
         <h2 className="text-3xl font-semibold">Ready to start journaling?</h2>
         {isSignedIn ? (
           <p className="mt-4 text-lg">
