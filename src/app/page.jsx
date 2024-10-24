@@ -1,5 +1,5 @@
 "use client";
-
+import ReviewModal from '../components/ReviewModal';
 import { useEffect, useState } from "react";
 import Lenis from "lenis";
 import Link from "next/link";
@@ -85,6 +85,7 @@ export default function Home() {
               <SignUpButton>Sign Up Now</SignUpButton>
             </Button>
           )}
+          <ReviewModal />
         </div>
       </section>
     </main>
