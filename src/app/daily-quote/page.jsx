@@ -8,6 +8,7 @@ export default function DailyQuote() {
   const [quote, setQuote] = useState("Loading...");
   const [author, setAuthor] = useState("Anonymous");
   const [error, setError] = useState();
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -24,6 +25,8 @@ export default function DailyQuote() {
   }, []);
 
   const getNewQuote = async () => {
+    setQuote("Loading...");
+    setCopied(false);
     const response = await axios.get("/api/quote");
     setQuote(response.data[0].q);
     setAuthor(response.data[0].a);
@@ -31,6 +34,7 @@ export default function DailyQuote() {
 
   const copyQuote = async () => {
     await navigator.clipboard.writeText(`${quote} - ${author}`);
+    setCopied(true);
   };
 
   return (
@@ -68,6 +72,7 @@ export default function DailyQuote() {
               <RiFileCopyLine className="w-5 h-5" /> <span>Copy</span>
             </button>
           </div>
+          {copied && <p className="text-green-300 text-center mt-8">Copied successfully!</p>}
         </div>
 
         <footer className="text-center text-sm text-gray-500 mt-16">
