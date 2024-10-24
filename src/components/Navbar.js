@@ -9,7 +9,8 @@ const items = [
   { link: "/daily-quote", name: "Daily Quote" },
   { link: "/about", name: "About" },
   { link: "/guestbook", name: "Guestbook" },
-  { link: "/diary", name: "Diary" }
+  { link: "/diary", name: "Diary" },
+  { link: "/contrubutors", name: "Our contributors" },
 ]
 
 export default function Navbar() {
