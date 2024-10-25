@@ -39,7 +39,7 @@ const NotFound = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ type: 'spring', stiffness: 120, delay: 0.6 }}
           >
-            The page you're looking for doesn't exist.
+            The page you are looking for doesnt exist.
           </motion.h2>
           
           <motion.p 
@@ -48,7 +48,7 @@ const NotFound = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
           >
-            Looks like you've wandered into unknown territory. Let's get you back to safety!
+            Looks like you have wandered into unknown territory. Let get you back to safety!
           </motion.p>
           
           <motion.div
