@@ -1,3 +1,31 @@
+# 📔 DearDiary: Your Personal Digital Diary
+
+<table align="center">
+    <thead align="center">
+        <tr border: 2px;>
+            <td><b>🌟 Stars</b></td>
+            <td><b>🍴 Forks</b></td>
+            <td><b>🐛 Issues</b></td>
+            <td><b>🔔 Open PRs</b></td>
+            <td><b>🔕 Closed PRs</b></td>
+        </tr>
+     </thead>
+    <tbody>
+         <tr>
+            <td><img alt="Stars" src="https://img.shields.io/github/stars/TenzDelek/DearDiary?style=flat&logo=github"/></td>
+             <td><img alt="Forks" src="https://img.shields.io/github/forks/TenzDelek/DearDiary?style=flat&logo=github"/></td>
+            <td><img alt="Issues" src="https://img.shields.io/github/issues/TenzDelek/DearDiary?style=flat&logo=github"/></td>
+            <td><img alt="Open Pull Requests" src="https://img.shields.io/github/issues-pr/TenzDelek/DearDiary?style=flat&logo=github"/></td>
+           <td><img alt="Closed Pull Requests" src="https://img.shields.io/github/issues-pr-closed/TenzDelek/DearDiary?style=flat&color=green&logo=github"/></td>
+        </tr>
+    </tbody>
+</table>
+
+<div align="center">
+  <img src="Assets/GSSoC-Ext.png" alt="gssoc">
+</div>
+
+
 # [DearDiary](https://github.com/TenzDelek/DearDiary)
 
 <img width="1000" alt="image" src="https://github.com/user-attachments/assets/ada4751d-dd69-427e-bc43-e31afe3e65c4">
