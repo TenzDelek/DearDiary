@@ -26,7 +26,6 @@ export const metadata = {
     shortcut: "/favicon/favicon/apple-touch-icon.png"
   },
   metadataBase: new URL('https://dear-diary-black.vercel.app/'),
-
 };
 
 export default function RootLayout({ children }) {
@@ -36,7 +35,7 @@ export default function RootLayout({ children }) {
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <header className="flex items-center justify-between p-2 text-white">
+          <header className="navbar-header flex items-center justify-between p-2 text-white">
             <div className="flex-grow flex sm:justify-center">
               <Navbar />
             </div>
