@@ -74,7 +74,7 @@ const About = () => {
                     {features.map((feature, index) => (
                         <div
                             key={feature.title}
-                            className=" p-6 rounded-md cursor-pointer transition-all duration-300 hover:ring-2 hover:ring-blue-400"
+                            className=" p-6 rounded-md cursor-pointer transition-all duration-300"
                             onClick={() => setActiveFeature(activeFeature === index ? null : index)}
                         >
                             <FeatureCard
