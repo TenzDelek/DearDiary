@@ -20,7 +20,7 @@ const Footer = () => {
             <ul class="mt-8 flex gap-6">
               <li>
                 <a
-                  href="#"
+                  href="https://www.facebook.com/"
                   rel="noreferrer"
                   target="_blank"
                   class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
@@ -39,7 +39,7 @@ const Footer = () => {
 
               <li>
                 <a
-                  href="#"
+                  href="https://instagram.com/"
                   rel="noreferrer"
                   target="_blank"
                   class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
@@ -58,7 +58,7 @@ const Footer = () => {
 
               <li>
                 <a
-                  href="#"
+                  href="https://x.com/"
                   rel="noreferrer"
                   target="_blank"
                   class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
@@ -75,7 +75,7 @@ const Footer = () => {
 
               <li>
                 <a
-                  href="#"
+                  href="https://github.com/TenzDelek/DearDiary"
                   rel="noreferrer"
                   target="_blank"
                   class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
@@ -94,7 +94,7 @@ const Footer = () => {
 
               <li>
                 <a
-                  href="#"
+                  href="https://dribbble.com/"
                   rel="noreferrer"
                   target="_blank"
                   class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
