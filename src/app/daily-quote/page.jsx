@@ -53,56 +53,19 @@ export default function DailyQuote() {
 
         {/* Category Selector */}
         <div className="flex justify-center space-x-4 mb-6">
-          <button
-            className={`px-4 py-2 rounded-md font-semibold ${
-              category === "reflective"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-300 text-gray-800"
-            }`}
-            onClick={() => setCategory("motivation")}
-          >
-            Motivation
-          </button>
-          <button
-            className={`px-4 py-2 rounded-md font-semibold ${
-              category === "gratitude"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-300 text-gray-800"
-            }`}
-            onClick={() => setCategory("love")}
-          >
-            Love
-          </button>
-          <button
-            className={`px-4 py-2 rounded-md font-semibold ${
-              category === "gratitude"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-300 text-gray-800"
-            }`}
-            onClick={() => setCategory("courage")}
-          >
-            Courage
-          </button>
-          <button
-            className={`px-4 py-2 rounded-md font-semibold ${
-              category === "life"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-300 text-gray-800"
-            }`}
-            onClick={() => setCategory("life")}
-          >
-            Life
-          </button>
-          <button
-            className={`px-4 py-2 rounded-md font-semibold ${
-              category === "life"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-300 text-gray-800"
-            }`}
-            onClick={() => setCategory("perseverance")}
-          >
-            Perseverance
-          </button>
+          {["life", "motivation", "love", "courage", "Inspiration", "Friendship", "Hope", "Wisdom", "Nature"].map((cat) => (
+            <button
+              key={cat}
+              className={`px-4 py-2 rounded-md font-semibold ${
+                category === cat
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-300 text-gray-800"
+              }`}
+              onClick={() => setCategory(cat)}
+            >
+              {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            </button>
+          ))}
         </div>
 
         <div className="max-w-3xl mx-auto p-8 bg-[#171717] rounded-lg shadow-lg">
@@ -134,9 +97,7 @@ export default function DailyQuote() {
         </div>
 
         <footer className="text-center text-sm text-gray-500 mt-16">
-          <p>
-            &copy; {new Date().getFullYear()} Daily Quotes. All rights reserved.
-          </p>
+          <p>&copy; {new Date().getFullYear()} Daily Quotes. All rights reserved.</p>
         </footer>
       </div>
     </div>
