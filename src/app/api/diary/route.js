@@ -8,19 +8,26 @@ export async function GET(req) {
     }
     let user = await prisma.user.findUnique({
         where: { clerkId: userId },
-    })
+    });
     let diaries = await prisma.diary.findMany({
         where: {
             userId: user.id,
+        },
+        select: { // Optionally, select only the fields you want
+            id: true,
+            title: true,
+            content: true,
+            tags: true, // Ensure tags are selected
+            userId: true,
         },
     });
 
     return Response.json({ diaries });
 }
 
+
 export async function POST(req) {
     const { userId } = getAuth(req);
-
     const body = await req.json();
 
     if (!userId) {
@@ -28,28 +35,29 @@ export async function POST(req) {
     }
 
     try {
-        let clerkUser = await clerkClient.users.getUser(userId)
+        let clerkUser = await clerkClient.users.getUser(userId);
         clerkUser = {
             id: userId,
             name: clerkUser.firstName + " " + clerkUser.lastName,
             email: clerkUser.primaryEmailAddress.emailAddress,
-        }
+        };
         let user = await prisma.user.findUnique({
             where: { clerkId: clerkUser.id },
-        })
+        });
         if (!user) {
             user = await prisma.user.create({
                 data: {
                     clerkId: clerkUser.id,
-                    name: clerkUser.name || '', // Use fullName if available
-                    email: clerkUser.email || '', // Use emailAddress if available
+                    name: clerkUser.name || '', 
+                    email: clerkUser.email || '', 
                 },
-            })
+            });
         }
         const diary = await prisma.diary.create({
             data: {
                 title: body.title,
                 content: body.content,
+                tags: body.tags || [], // Add this line to save tags
                 userId: user.id,
             },
         });

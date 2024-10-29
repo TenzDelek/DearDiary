@@ -35,12 +35,13 @@ export async function PATCH(req, { params }) {
     }
     const { id } = params;
     const body = await req.json();
-    const { title, content } = body;
+    const { title, content, tags } = body; // Include tags here
     try {
         const user = await prisma.user.findUnique({
             where: {
                 clerkId: userId,
-            }, select: {
+            }, 
+            select: {
                 id: true
             }
         });
@@ -51,7 +52,8 @@ export async function PATCH(req, { params }) {
             },
             data: {
                 title,
-                content
+                content,
+                tags: tags || [] // Update tags as well
             },
         });
         return Response.json({ message: "diary updated successfully" });

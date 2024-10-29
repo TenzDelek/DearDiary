@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 const initialFormState = {
   title: "",
   content: "",
-  tags: [], // Add tags to the initial state
+  tags: [],
 };
 
 export default function Diary() {
@@ -19,6 +19,8 @@ export default function Diary() {
   const [form, setForm] = useState(initialFormState);
   const [showModal, setShowModal] = useState(false);
   const [currentDiary, setCurrentDiary] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [uniqueTags, setUniqueTags] = useState([]);
 
   const handleEdit = (diary) => {
     setCurrentDiary(diary);
@@ -37,14 +39,14 @@ export default function Diary() {
         body: JSON.stringify({
           title: currentDiary.title,
           content: currentDiary.content,
-          tags: currentDiary.tags, // Include tags
+          tags: currentDiary.tags,
         }),
       });
-      const data = await res.json();
+      await res.json();
+      fetchDiaries();
     } catch (err) {
-      console.log("error while sending the diary details", err);
+      console.log("Error updating diary:", err);
     } finally {
-      setCount((prev) => !prev);
       setForm(initialFormState);
     }
   };
@@ -60,18 +62,15 @@ export default function Diary() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          title: data.title,
-          content: data.content,
-          tags: data.tags, // Include tags
-        }),
+        body: JSON.stringify(data),
       });
-      res = await res.json();
+      await res.json();
+      fetchDiaries();
     } catch (err) {
-      console.log("error while sending the diary details", err);
+      console.log("Error sending diary:", err);
     } finally {
       setLoading(false);
-      setCount((prev) => !prev);
+      setForm(initialFormState);
     }
   };
 
@@ -83,17 +82,15 @@ export default function Diary() {
 
   const handleDelete = async (id) => {
     try {
-      let res = await fetch(`/api/diary/${id}`, {
+      await fetch(`/api/diary/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
       });
-      res = await res.json();
+      fetchDiaries();
     } catch (err) {
-      console.log("error while sending the diary details", err);
-    } finally {
-      setCount((prev) => !prev);
+      console.log("Error deleting diary:", err);
     }
   };
 
@@ -107,14 +104,23 @@ export default function Diary() {
       });
       res = await res.json();
       setDiaries(res.diaries);
+      setUniqueTags([...new Set(res.diaries.flatMap((diary) => diary.tags))]); // Populate unique tags
     } catch (err) {
-      console.log("error while sending the diary details", err);
+      console.log("Error fetching diaries:", err);
     }
   };
 
+  const filteredDiaries = diaries.filter(
+    (diary) =>
+      diary.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      diary.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      diary.tags.some((tag) =>
+        tag.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+  );
+
   return (
     <div className="p-6 m-4 grid grid-cols-1 md:grid-cols-4 gap-6 h-auto md:h-5/6 bg-background">
-      {/* Add Diary Card */}
       <Card className="col-span-1 bg-card shadow-lg rounded-lg border border-border">
         <CardHeader>
           <CardTitle className="text-lg font-semibold text-card-foreground">
@@ -153,51 +159,68 @@ export default function Diary() {
                 <Input
                   type="text"
                   placeholder="Tags"
-                  value={form.tags.join(", ")} // Join tags for display
+                  value={form.tags.join(", ")}
                   onChange={(e) =>
                     setForm({
                       ...form,
                       tags: e.target.value.split(",").map((tag) => tag.trim()),
                     })
-                  } // Split and trim tags
+                  }
                   className="bg-input text-foreground placeholder-muted-foreground border border-border rounded-md p-2 focus:ring focus:ring-primary"
                 />
               </div>
             </div>
-            {loading ? (
-              <Button
-                className="my-4 w-full bg-muted text-muted-foreground rounded-md py-2"
-                disabled
-              >
-                Loading...
-              </Button>
-            ) : (
-              <Button className="my-4 w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-md py-2">
-                Add
-              </Button>
-            )}
+            <Button
+              className="my-4 w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-md py-2"
+              disabled={loading}
+            >
+              {loading ? "Loading..." : "Add"}
+            </Button>
           </form>
         </CardContent>
       </Card>
 
-      {/* List of Diaries */}
       <Card className="col-span-1 md:col-span-3 p-4 gap-4 bg-card shadow-lg border border-border rounded-lg">
-        {diaries.map((diary, index) => (
+        <Input
+          type="text"
+          placeholder="Search diaries by title, content, or tags"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="mb-4 bg-input text-foreground placeholder-muted-foreground border border-border rounded-md p-2 focus:ring focus:ring-primary"
+        />
+
+        <div className="flex flex-wrap gap-2 mb-4">
+          {uniqueTags.map((tag) => (
+            <Button
+              key={tag}
+              onClick={() => setSearchQuery(tag)}
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-md px-3 py-1"
+            >
+              {tag}
+            </Button>
+          ))}
+        </div>
+
+        {filteredDiaries.map((diary, index) => (
           <Card
             key={index}
-            className="mb-4 bg-card shadow-md border border-border rounded-lg"
+            className="mb-4 bg-zinc-900 shadow-md border border-border rounded-lg"
           >
-            <CardHeader>
-              <CardTitle className="text-xl font-semibold text-card-foreground">
+              <CardTitle className="text-xl font-semibold text-black bg-white p-2 rounded-lg w-fit ml-5 mt-3 mb-3">
                 {diary.title}
               </CardTitle>
-            </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">{diary.content}</p>
-              <p className="text-muted-foreground mt-2">
-                Tags: {diary.tags.join(", ")}
-              </p>{" "}
-              {/* Display tags */}
+              <p className="text-muted-foreground border p-2">{diary.content}</p>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {diary.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="bg-zinc-600 text-secondary-foreground px-3 py-1 rounded-lg text-sm font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </CardContent>
             <div className="flex justify-between px-6 pb-4">
               <Button
@@ -207,9 +230,7 @@ export default function Diary() {
                 Edit
               </Button>
               <Button
-                onClick={() => {
-                  handleDelete(diary.id);
-                }}
+                onClick={() => handleDelete(diary.id)}
                 className="bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-md px-4 py-2"
               >
                 Delete
@@ -219,7 +240,6 @@ export default function Diary() {
         ))}
       </Card>
 
-      {/* Modal for Editing */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-card rounded-lg shadow-lg p-6 w-11/12 md:w-1/3">
@@ -265,7 +285,7 @@ export default function Diary() {
                     </Label>
                     <Input
                       type="text"
-                      value={currentDiary?.tags.join(", ") || ""} // Join tags for display
+                      value={currentDiary?.tags?.join(", ") || ""}
                       onChange={(e) =>
                         setCurrentDiary({
                           ...currentDiary,
@@ -273,23 +293,14 @@ export default function Diary() {
                             .split(",")
                             .map((tag) => tag.trim()),
                         })
-                      } // Split and trim tags
+                      }
                       className="bg-input text-foreground placeholder-muted-foreground border border-border rounded-md p-2 focus:ring focus:ring-primary"
                     />
                   </div>
                 </div>
-                <div className="flex justify-end gap-4 mt-4">
-                  <Button
-                    type="button"
-                    className="bg-muted text-muted-foreground hover:bg-muted/90 rounded-md px-4 py-2"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Cancel
-                  </Button>
-                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2">
-                    Save
-                  </Button>
-                </div>
+                <Button className="my-4 w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-md py-2">
+                  Update
+                </Button>
               </form>
             </CardContent>
           </div>
