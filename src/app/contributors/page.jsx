@@ -3,6 +3,22 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+const Form_validation = (e) => {
+  e.preventDefault();
+  const email_input = document.getElementById("emailInput").value;
+  
+  // Regex to check for gmail.com only
+  const GoogleRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (!GoogleRegex.test(email_input)) {
+    alert("Please enter a valid email address");
+  } else {
+    alert("Welcome, You are a Subscriber");
+    document.getElementById("emailInput").value="";
+  }
+};
+
+
 const ContributorCard = ({ login, avatar_url, html_url, contributions, type }) => (
   <motion.div
     whileHover={{ y: -5, boxShadow: "0 10px 30px -15px rgba(0, 0, 0, 0.3)" }}
@@ -189,27 +205,27 @@ export default function Contributor() {
       </section>
 
       {/* Subscription Form */}
+  
       <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-black mb-6">Stay Updated</h2>
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-md bg-white text-black focus:outline-none border border-gray-300"
-              required
-            />
-            <button
-              type="submit"
-              className="px-4 py-3 bg-black text-white font-bold rounded-md hover:bg-gray-700 transition-colors duration-300"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </section>
-    </div>
+  <div className="max-w-3xl mx-auto text-center">
+    <h2 className="text-3xl font-bold text-black mb-6">Stay Updated</h2>
+    <form onSubmit={Form_validation} className="flex flex-col sm:flex-row gap-4" id="emailForm">
+      <input
+        type="email"
+        id="emailInput"
+        placeholder="Enter your email"
+        className="w-full px-4 py-3 rounded-md bg-white text-black focus:outline-none border border-gray-300"
+        required
+      />
+      <button
+        type="submit"
+        className="px-4 py-3 bg-black text-white font-bold rounded-md hover:bg-gray-700 transition-colors duration-300"
+      >
+        Subscribe
+      </button>
+    </form>
+  </div>
+</section>
+</div>
   );
 }
