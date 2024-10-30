@@ -1,7 +1,9 @@
 "use client"
 import { CircleX, Menu } from 'lucide-react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 
 // icons
@@ -26,6 +28,24 @@ const items = [
 ]
 
 export default function Navbar() {
+const Navref = useRef(null)
+
+useGSAP(() => {
+    gsap.fromTo(
+      Navref.current.children,
+      {
+        y: -30,
+        opacity: 0
+      },
+      {
+        duration: 1,
+        y: 0,
+        opacity: 1,
+        stagger:0.3,
+        ease: "power2.out"
+      }
+    );
+}, []);
 
   // This state hook is responsible for the transition effect on the navbar -> updating this true/false makes the navbar visible/hidden
   const [open, setOpen] = useState(true)
@@ -60,10 +80,10 @@ export default function Navbar() {
       </button>
       {
         // Main Navbar
-        <nav className={`bg-transparent absolute top-0 left-0 items-center h-screen md:h-auto transition-transform w-full ${open === true ? 'translate-x-0' : '-translate-x-full'}  duration-200 md:flex md:w-auto md:bg-black md:bg-transparent z-30 md:z-[2] md:relative md:flex-row flex  justify-center md:p-4 text-white space-x-4`}>
+        <nav ref={Navref} className={`bg-transparent absolute top-0 left-0 items-center h-screen md:h-auto transition-transform w-full ${open === true ? 'translate-x-0' : '-translate-x-full'}  duration-200 md:flex md:w-auto md:bg-black md:bg-transparent z-30 md:z-[2] md:relative md:flex-row flex  justify-center md:p-4 text-white space-x-4`}>
 
           {/* This div is containing all necessary navigation links as well as a div (this div is shown on small devices only\-). */}
-          <div id='navLinksContainer' className={` flex flex-col md:flex-row gap-y-2 gap-x-8 h-full w-[50%] md:w-auto text-gray-400 bg-black shadow-gray-600 shadow-lg md:shadow-none pt-5 md:pt-0`}>
+          <div id='navLinksContainer' className={`flex flex-col md:flex-row gap-y-2 gap-x-8 h-full w-[50%] md:w-auto text-gray-400 shadow-gray-600 shadow-lg md:shadow-none pt-5 md:pt-0`}>
 
 
             {/* Close button - Can be closed by clicking on this as well as by the outside the sideBar */}

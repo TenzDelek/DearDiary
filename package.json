@@ -25,6 +25,7 @@
   "dependencies": {
     "@clerk/clerk-sdk-node": "^5.0.48",
     "@clerk/nextjs": "^5.7.1",
+    "@gsap/react": "^2.1.1",
     "@prisma/client": "^5.20.0",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
@@ -32,6 +33,7 @@
     "class-variance-authority": "^0.7.0",
     "cors": "^2.8.5",
     "framer-motion": "^11.11.1",
+    "gsap": "^3.12.5",
     "lenis": "^1.1.13",
     "lucide-react": "^0.447.0",
     "next": "14.2.13",
