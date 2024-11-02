@@ -166,8 +166,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <p className="text-xs text-gray-500 dark:text-gray-400">
-          &copy; 2024. Dear Diary. All rights reserved.
+        <p class="text-xs text-gray-500 dark:text-gray-400">
+          &copy; {new Date().getFullYear()}. Dear Diary. All rights reserved.
         </p>
       </div>
     </footer>
