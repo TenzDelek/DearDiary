@@ -7,16 +7,16 @@ const ContributorCard = ({ login, avatar_url, html_url, contributions, type }) =
   <motion.div
     whileHover={{ y: -5, boxShadow: "0 10px 30px -15px rgba(0, 0, 0, 0.3)" }}
     transition={{ type: "spring", stiffness: 300 }}
-    className="bg-white text-black rounded-lg shadow-lg border border-gray-300 overflow-hidden"
-  >
+    className="bg-black text-black rounded-lg shadow-md border border-gray-100 overflow-hidden"
+    >
     <div className="p-6 text-center">
       <img
         src={avatar_url}
         alt={login}
         className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-200"
       />
-      <h3 className="font-bold text-xl">{login}</h3>
-      <p className="text-sm text-gray-500 mb-2">{type}</p>
+      <h3 className="font-bold text-xl text-white">{login}</h3>
+      <p className="text-sm text-gray-300 mb-2">{type}</p>
       <div className="mt-4 bg-gray-100 rounded-full py-2 px-4 inline-block">
         <span className="font-semibold">{contributions} contributions</span>
       </div>
@@ -97,13 +97,13 @@ export default function Contributor() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
-      <section className="relative h-[70vh] flex items-center justify-center text-center bg-white">
-        <div className="absolute inset-0 bg-gray-200 opacity-50" />
+      <section className="relative h-[70vh] flex items-center justify-center text-center bg-black">
+        <div className="absolute inset-0 opacity-50" />
         <div className="relative z-10 space-y-6 max-w-4xl mx-auto px-4">
           <motion.h1
-            className="text-5xl font-bold sm:text-6xl md:text-7xl text-black"
+            className="text-5xl font-bold sm:text-6xl md:text-7xl text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -111,7 +111,7 @@ export default function Contributor() {
             Our Amazing Contributors
           </motion.h1>
           <motion.p
-            className="text-xl sm:text-2xl text-gray-600"
+            className="text-xl sm:text-2xl text-gray-200"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -125,7 +125,7 @@ export default function Contributor() {
           >
             <a
               href="#contribute"
-              className="mt-8 px-8 py-4 bg-black text-white font-bold rounded-full shadow-lg hover:bg-gray-700 transition duration-300 ease-in-out inline-block"
+              className="mt-8 px-8 py-4 bg-white text-black font-bold rounded-full shadow-lg hover:bg-gray-700 transition duration-300 ease-in-out inline-block"
             >
               Become a Contributor
             </a>
@@ -134,9 +134,9 @@ export default function Contributor() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-black">
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">
             Project Statistics
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -173,9 +173,9 @@ export default function Contributor() {
       </section>
 
       {/* Contributor List */}
-      <section id="contribute" className="py-16 px-4 sm:px-6 lg:px-8 bg-white text-black">
+      <section id="contribute" className="py-16 px-4 sm:px-6 lg:px-8 bg-black text-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Meet Our Contributors</h2>
+          <h2 className="text-3xl font-bold text-white text-center mb-12">Meet Our Contributors</h2>
           {loading ? (
             <p className="text-center">Loading contributors...</p>
           ) : (
@@ -189,9 +189,9 @@ export default function Contributor() {
       </section>
 
       {/* Subscription Form */}
-      <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+      <section className="bg-black py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-black mb-6">Stay Updated</h2>
+          <h2 className="text-3xl font-bold text-white mb-6">Stay Updated</h2>
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
             <input
               type="email"
@@ -203,7 +203,7 @@ export default function Contributor() {
             />
             <button
               type="submit"
-              className="px-4 py-3 bg-black text-white font-bold rounded-md hover:bg-gray-700 transition-colors duration-300"
+              className="px-4 py-3 bg-gray-200 text-black font-bold rounded-md hover:bg-gray-700 transition-colors duration-300"
             >
               Subscribe
             </button>
