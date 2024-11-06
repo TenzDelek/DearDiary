@@ -31,14 +31,7 @@ export default function Diary() {
     if (currentNotes.content === "") {
       setErrorMessage((prev) => ({
         ...prev,
-        modalcontent: "Please enter the title",
-      }));
-      return;
-    }
-    if (currentNotes.content === "") {
-      setErrorMessage((prev) => ({
-        ...prev,
-        modalcontent: "Please enter the content",
+        modalcontent: "Please enter a note",
       }));
       return;
     }
