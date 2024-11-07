@@ -12,7 +12,6 @@ import { IoIosContacts } from "react-icons/io";
 import { GiNotebook } from "react-icons/gi";
 import { GiBlackBook } from "react-icons/gi";
 import { FaPeopleGroup } from "react-icons/fa6";
-import ProgressBar from './Progressbar';
 
 
 
@@ -56,7 +55,6 @@ export default function Navbar() {
     <>
 
       {/* Hamburger Menu -> Visible on small devices only */}
-      <ProgressBar/>
       <button className='md:hidden z-10' onClick={() => setOpen(!open)}>
         <Menu />
       </button>
