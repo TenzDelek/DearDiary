@@ -1,0 +1,35 @@
+name: Issue Auto-comment
+
+on:
+  issues:
+    types:
+      - opened
+      - closed
+
+jobs:
+  auto_comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on Issue when opened
+        if: github.event.action == 'opened'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: `Thanks for opening this issue! We appreciate your contribution. Please make sure you’ve provided all the necessary details and screenshots, and don't forget to follow our Guidelines and Code of Conduct. Happy coding! 🚀`
+            })
+
+      - name: Comment on Issue when closed
+        if: github.event.action == 'closed'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: `This issue has been successfully closed. Thank you for your contribution and helping us improve the project! If you have any more ideas or run into other issues, feel free to open a new one. Happy coding! 🚀`
+            })
