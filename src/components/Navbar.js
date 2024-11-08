@@ -63,7 +63,7 @@ export default function Navbar() {
         <nav className={`bg-transparent absolute top-0 left-0 items-center h-screen md:h-auto transition-transform w-full ${open === true ? 'translate-x-0' : '-translate-x-full'}  duration-200 md:flex md:w-auto md:bg-black md:bg-transparent z-30 md:z-[2] md:relative md:flex-row flex  justify-center md:p-4 text-white space-x-4`}>
 
           {/* This div is containing all necessary navigation links as well as a div (this div is shown on small devices only\-). */}
-          <div id='navLinksContainer' className={` flex flex-col md:flex-row gap-y-2 gap-x-8 h-full w-[50%] md:w-auto text-gray-400 bg-black shadow-gray-600 shadow-lg md:shadow-none pt-5 md:pt-0`}>
+          <div id='navLinksContainer' className={` flex flex-col md:flex-row gap-y-2 gap-x-8 h-full w-[50%] md:w-auto text-gray-400 bg-transparent shadow-gray-600 shadow-lg md:shadow-none pt-5 md:pt-0`}>
 
 
             {/* Close button - Can be closed by clicking on this as well as by the outside the sideBar */}
