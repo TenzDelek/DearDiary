@@ -13,6 +13,10 @@ export default function Diary() {
   const [form, setForm] = useState({
     content: "",
   });
+  const [errorMessage, setErrorMessage] = useState({
+    content: "",
+    modalcontent: "",
+  });
 
   const [showModal, setShowModal] = useState(false);
   const [currentNotes, setCurrentNotes] = useState(null);
@@ -24,6 +28,13 @@ export default function Diary() {
 
   const handleModalSubmit = async (e) => {
     e.preventDefault();
+    if (currentNotes.content === "") {
+      setErrorMessage((prev) => ({
+        ...prev,
+        modalcontent: "Please enter a note",
+      }));
+      return;
+    }
     setShowModal(false);
     try {
       const res = await fetch(`/api/notes/${currentNotes.id}`, {
@@ -64,8 +75,16 @@ export default function Diary() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (form.content === "") {
+      setErrorMessage((prev) => ({
+        modalcontent: "",
+        content: "Please enter a note",
+      }));
+      return;
+    }
     setLoading((prev) => true);
     sendingData(form);
+    setForm({ content: "" });
   };
 
   const handleDelete = async (id) => {
@@ -117,13 +136,21 @@ export default function Diary() {
                   type="text"
                   placeholder="Add your note here"
                   value={form.content}
-                  onChange={(e) =>
-                    setForm({ ...form, content: e.target.value })
-                  }
+                  minLength={1}
+                  onChange={(e) => {
+                    setForm({ ...form, content: e.target.value });
+                    if (errorMessage.content)
+                      setErrorMessage({ ...errorMessage, content: "" });
+                  }}
                   className="bg-input text-foreground placeholder-muted-foreground border border-border rounded-md p-2 focus:ring focus:ring-primary"
                 />
               </div>
             </div>
+            {errorMessage.content && (
+              <p className="text-red-500 mt-2 text-sm">
+                {errorMessage.content}
+              </p>
+            )}
             {loading ? (
               <Button
                 className="my-4 w-full bg-muted text-muted-foreground rounded-md py-2"
@@ -145,10 +172,10 @@ export default function Diary() {
         {notes.map((notes, index) => (
           <Card
             key={index}
-            className="mb-4 bg-card shadow-md border border-border rounded-lg"
+            className="mb-4 bg-card shadow-md border border-border rounded-lg pt-2"
           >
             <CardContent>
-              <p className="text-muted-foreground">{notes.content}</p>
+              <p className="text-muted-foreground ">{notes.content}</p>
             </CardContent>
             <div className="flex justify-between px-6 pb-4">
               <Button
@@ -187,16 +214,25 @@ export default function Diary() {
                     <Input
                       type="text"
                       value={currentNotes?.content || ""}
-                      onChange={(e) =>
+                      onChange={(e) => {
                         setCurrentNotes({
                           ...currentNotes,
                           content: e.target.value,
-                        })
-                      }
+                        });
+                        setErrorMessage((prev) => ({
+                          ...prev,
+                          modalcontent: "",
+                        }));
+                      }}
                       className="bg-input text-foreground placeholder-muted-foreground border border-border rounded-md p-2 focus:ring focus:ring-primary"
                     />
                   </div>
                 </div>
+                {errorMessage.modalcontent && (
+                  <p className="text-red-500 mt-2 text-sm">
+                    {errorMessage.modalcontent}
+                  </p>
+                )}
                 <div className="flex justify-end gap-4 mt-4">
                   <Button
                     type="button"
