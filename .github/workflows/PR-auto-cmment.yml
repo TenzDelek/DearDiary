@@ -1,0 +1,47 @@
+name: PR Auto-comment
+
+on:
+  pull_request:
+    types:
+      - opened
+      - closed
+
+jobs:
+  auto_comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on PR when opened
+        if: github.event.action == 'opened'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: `Thank you for opening this Pull Request! We appreciate your effort and contribution to improving our project. Please ensure you’ve followed all the guidelines and that your PR meets our contribution standards. Happy coding! 🚀`
+            })
+
+      - name: Comment on PR when merged
+        if: github.event.action == 'closed' && github.event.pull_request.merged == true
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: `This Pull Request has been successfully merged! 🎉 Thank you for your contribution and for helping us improve the project. We look forward to more contributions from you! 🚀`
+            })
+
+      - name: Comment on PR when closed without merging
+        if: github.event.action == 'closed' && github.event.pull_request.merged == false
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: `This Pull Request was closed without merging. Thank you for your efforts! If there's anything we can do to help with future contributions, let us know. Happy coding! 🚀`
+            })

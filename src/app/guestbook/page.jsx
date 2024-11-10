@@ -37,7 +37,9 @@ function Guestbook() {
       try {
         const res = await fetch("/api/guestbook/entries");
         const data = await res.json();
-        setEntries(data);
+        // setEntries(data);
+        setEntries(Array.isArray(data) ? data : []);
+
       } catch (error) {
         console.error("Failed to fetch guestbook entries", error);
       } finally {

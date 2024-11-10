@@ -3,6 +3,7 @@ import "./globals.css";
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import Navbar from '../components/Navbar';
 import Footer from "@/components/Footer";
+import { dark } from "@clerk/themes";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,7 +28,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{
+      baseTheme: dark,
+      layout: {
+        socialButtonsPlacement: 'bottom',
+        socialButtonsVariant: 'blockButton',
+        termsPageUrl: '',
+      },
+      variables: {
+        colorBackground: 'hsl(0 0% 3.9%)'
+      }
+    }}>
       <html lang="en" className="dark">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -46,7 +57,7 @@ export default function RootLayout({ children }) {
             </div>
           </header>
           {children}
-          <footer><Footer/></footer>
+          <footer><Footer /></footer>
         </body>
       </html>
     </ClerkProvider>
